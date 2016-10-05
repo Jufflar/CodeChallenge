@@ -1,0 +1,5 @@
+c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.model\bin\Debug\ShippingOperator.model.dll
+c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.model\bin\Debug\ShippingOperator.model.pdb
+c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.model\obj\Debug\ShippingOperator.model.dll
+c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.model\obj\Debug\ShippingOperator.model.pdb
+C:\Users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.model\obj\Debug\ShippingOperator.model.csprojResolveAssemblyReference.cache
