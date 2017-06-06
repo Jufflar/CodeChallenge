@@ -37,7 +37,7 @@
 
             // assert
             Assert.AreEqual(18, journey.TotalDuration);
-            //Assert.AreEqual();
+            Assert.AreEqual(Port.NewYork, journey.Destination.Last());
         }
     }
 }

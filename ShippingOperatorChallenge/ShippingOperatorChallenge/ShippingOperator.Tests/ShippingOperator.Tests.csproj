@@ -47,9 +47,10 @@
   <ItemGroup>
     <Compile Include="AtlanticOceanJourneyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Questions\ShortestJourneyTests.cs" />
+    <Compile Include="Questions\2.ShortestJourneyTests.cs" />
+    <Compile Include="Questions\NumberOfRoutesTests.cs" />
     <Compile Include="TestNetwork.cs" />
-    <Compile Include="Questions\TotalDurationTests.cs" />
+    <Compile Include="Questions\1.TotalDurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

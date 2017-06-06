@@ -10,7 +10,7 @@
         [Test]
         public void ConstructJourney_ValidNetworkAndStartingPort_NewJourneyConstructed()
         {
-            INetworkConfiguration networkConfiguration = new TestNetwork();
+            INetworkConfiguration networkConfiguration = new AtlanticOceanNetwork();
 
             var journey = new Journey(networkConfiguration.Routes, Port.BuenosAires);
 
@@ -20,7 +20,7 @@
         [Test]
         public void CalculateTotalDuration_StartingPortOnly_NewDestinationAdded()
         {
-            INetworkConfiguration networkConfiguration = new TestNetwork();
+            INetworkConfiguration networkConfiguration = new AtlanticOceanNetwork();
 
             var journey = new Journey(networkConfiguration.Routes, Port.NewYork);
 
@@ -32,7 +32,7 @@
         [Test]
         public void CalculateTotalDuration_StartingPortAndExistingDestination_NewDestinationAdded()
         {
-            INetworkConfiguration networkConfiguration = new TestNetwork();
+            INetworkConfiguration networkConfiguration = new AtlanticOceanNetwork();
 
             var journey = new Journey(networkConfiguration.Routes, Port.NewYork);
 

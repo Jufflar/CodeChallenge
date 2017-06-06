@@ -7,3 +7,12 @@ c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChalleng
 c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.Tests\bin\Debug\nunit.framework.xml
 c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.Tests\obj\Debug\ShippingOperator.Tests.dll
 c:\users\websterm\Documents\Visual Studio 2010\Projects\ShippingOperatorChallenge\ShippingOperator.Tests\obj\Debug\ShippingOperator.Tests.pdb
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\bin\Debug\ShippingOperator.Tests.dll
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\bin\Debug\ShippingOperator.Tests.pdb
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\bin\Debug\nunit.framework.dll
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\bin\Debug\ShippingOperator.model.dll
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\bin\Debug\ShippingOperator.model.pdb
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\bin\Debug\nunit.framework.xml
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\obj\Debug\ShippingOperator.Tests.csprojResolveAssemblyReference.cache
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\obj\Debug\ShippingOperator.Tests.dll
+C:\Users\websterm\Source\Repos\CodeChallenge\ShippingOperatorChallenge\ShippingOperatorChallenge\ShippingOperator.Tests\obj\Debug\ShippingOperator.Tests.pdb

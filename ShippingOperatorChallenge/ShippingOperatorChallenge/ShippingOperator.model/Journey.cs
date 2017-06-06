@@ -15,9 +15,11 @@
             Destination = new List<Port>();
         }
 
+        public List<Port> Destination { get; private set; }
+        public decimal JourneyRoutesAvailable { get; set; }
+
         public IEnumerable<Route> Routes { get; set; }
         public Port StartingPort { get; private set; }
-        public List<Port> Destination { get; private set; }
         public decimal TotalDuration { get; private set; }
 
         public void AddDestination(Port newDestination)
@@ -27,9 +29,59 @@
             Destination.Add(newDestination);
         }
 
+        public void CalculateJourney(Port destination)
+        {
+            var journeys = new List<Journey>();
+
+            SetInitialRoutes(journeys);
+
+            var available = CalculateSubJourneys(destination, journeys.ToArray(), journeys);
+
+            JourneyRoutesAvailable = available.Count(w => w.Destination.Any(a => a == destination));
+            Destination = available.Where(w => w.Destination.Any(a => a == destination)).OrderBy(t => t.TotalDuration).Select(s => s.Destination).First();
+            TotalDuration = available.Where(w => w.Destination.Any(a => a == destination)).OrderBy(t => t.TotalDuration).Select(s => s.TotalDuration).First();
+        }
+
+        private static Journey[] RouteMultipleJourneys(Port destination, Journey[] available, int i, Route route, List<Journey> journeys)
+        {
+            if (available[i].Destination.All(a => a != route.To))
+            {
+                var jou = new Journey(available[i].Routes, available[i].StartingPort);
+
+                foreach (var port in available[i].Destination)
+                    if (port != destination)
+                        jou.AddDestination(port);
+
+                jou.AddDestination(route.To);
+
+                journeys.Add(jou);
+                available = journeys.ToArray();
+            }
+            return available;
+        }
+
+        private Journey[] CalculateSubJourneys(Port destination, Journey[] available, List<Journey> journeys)
+        {
+            for (var i = 0; i < available.Length; i++)
+                if (!available[i].Destination.Any(a => a.Equals(destination)))
+                {
+                    var routes = GetValidRoutesFromPort(available[i].Destination.Last());
+
+                    if (routes.Count == 1)
+                        available[i].AddDestination(routes[0].To);
+                    else
+                        foreach (var route in routes)
+                            if (route.To == destination)
+                                available[i].AddDestination(route.To);
+                            else
+                                available = RouteMultipleJourneys(destination, available, i, route, journeys);
+                }
+            return available;
+        }
+
         private decimal CalculateTotalDuration(Port newDestination)
         {
-            Port previousPort = GetPreviousPort();
+            var previousPort = GetPreviousPort();
 
             try
             {
@@ -41,46 +93,22 @@
             }
         }
 
-        public void CalculateJourney(Port destination)
+        private Port GetPreviousPort()
         {
-            var journeys = new List<Journey>();
+            return Destination.Count == 0 ? StartingPort : Destination.Last();
+        }
 
-            SetInitialRoutes(journeys);
-
-            foreach (Journey journey in journeys)
-            {
-                if (!journey.Destination.Any(a => a.Equals(destination)))
-                {
-                    List<Route> routes = GetValidRoutesFromPort(journey.Destination.Last());
-
-                    foreach (Route route in routes)
-                    {
-                        if (route == routes.Last())
-                        {
-                            journey.AddDestination(route.To);
-                        }
-                        else
-                        {
-                            var jou = new Journey(journey.Routes, journey.StartingPort)
-                            {
-                                Destination = journey.Destination
-                            };
-                            jou.AddDestination(route.To);
-                            journeys.Add(jou);
-                        }
-                    }
-                }
-            }
-
-            Destination = journeys.OrderBy(t => t.TotalDuration).Select(s => s.Destination).First();
-            TotalDuration = journeys.OrderBy(t => t.TotalDuration).Select(s => s.TotalDuration).First();
+        private List<Route> GetValidRoutesFromPort(Port fromPort)
+        {
+            var validRoutes = Routes.Where(w => w.From == fromPort).ToList();
+            return validRoutes;
         }
 
         private void SetInitialRoutes(List<Journey> validJourneys)
         {
-            List<Route> validRoutes = GetValidRoutesFromPort(StartingPort);
+            var validRoutes = GetValidRoutesFromPort(StartingPort);
 
-            foreach (Route r in validRoutes)
+            foreach (var r in validRoutes)
             {
                 var j = new Journey(Routes, StartingPort);
 
@@ -88,17 +116,6 @@
 
                 validJourneys.Add(j);
             }
-        }
-
-        private List<Route> GetValidRoutesFromPort(Port fromPort)
-        {
-            List<Route> validRoutes = Routes.Where(w => w.From == fromPort).ToList();
-            return validRoutes;
-        }
-
-        private Port GetPreviousPort()
-        {
-            return Destination.Count == 0 ? StartingPort : Destination.Last();
         }
     }
 }
